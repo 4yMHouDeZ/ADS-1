@@ -1,7 +1,6 @@
 // Copyright 2022 NNTU-CS
 #include <cstdint>
-#include <math.h>
-#include <iostream>
+#include <cmath>
 #include "alg.h"
 
 
@@ -49,11 +48,10 @@ uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
   uint64_t count = 0;
   for (uint64_t i = lbound; i < hbound; i++) {
     if (checkPrime(i)) {
-      if (prev == 0) {
-        prev = i;
-      } else if (i - prev == 2) {
+      if (i - prev == 2 && prev != 0) {
         count++;
       }
+      prev = i;
     }
   }
   return count;
